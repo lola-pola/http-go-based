@@ -40,7 +40,7 @@ func main() {
 		// rand.Seed(time.Now().UnixNano())
 		// b := rand.Intn(100) + 1
 		// fmt.Println(b)
-		fmt.Println(fibonacci(50))
+		fmt.Println(fibonacci(120))
 		// Store the response in Redis
 		// latencys := time.Since(start)
 		// lolas := latencys.String()
