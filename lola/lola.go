@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/http"
 	"time"
-	"math/rand"
+	// "math/rand"
 	"github.com/go-redis/redis"
 )
 
@@ -27,10 +27,10 @@ func main() {
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		// Measure the latency time
-		start := time.Now()
-
+		
+		startingtime := time.Now()
 		// Write the response
-		fmt.Fprint(w, "Hello, World!")
+		fmt.Fprint(w, " Start ")
 		
 
 		
@@ -38,13 +38,14 @@ func main() {
 		
 
 		// rand.Seed(time.Now().UnixNano())
-		b := rand.Intn(100) + 1
-		fmt.Println(b)
-		fmt.Println(fibonacci(4))
+		// b := rand.Intn(100) + 1
+		// fmt.Println(b)
+		fmt.Println(fibonacci(30))
 		// Store the response in Redis
-		latencys := time.Since(start)
-		lolas := latencys.String()
-		err := client.Set(lolas ,lolas , 0).Err()
+		// latencys := time.Since(start)
+		// lolas := latencys.String()
+		start := time.Now()
+		err := client.Set(startingtime.String() ,start , 0).Err()
 		if err != nil {
 			fmt.Println(err)
 			return
@@ -52,8 +53,9 @@ func main() {
 
 		// Calculate and print the latency time
 		latency := time.Since(start)
+		fmt.Fprint(w ,latency)
 		fmt.Printf("Latency time: %s\n", latency)
 	})
-
+	
 	http.ListenAndServe(":8085", nil)
 }
