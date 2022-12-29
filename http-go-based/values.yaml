@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: acrworkflow1672133156031/http-go-code
+  repository: acrworkflow1672133156031.azurecr.io/http-go-code
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
