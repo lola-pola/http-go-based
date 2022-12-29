@@ -9,4 +9,4 @@ RUN go get github.com/go-redis/redis
 
 # RUN go mod download
 # RUN ls 
-RUN go run lola/lola.go
+CMD [ "go", "run", "lola/lola.go" ] 
