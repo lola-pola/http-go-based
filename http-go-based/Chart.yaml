@@ -5,6 +5,19 @@ dependencies:
 - name: redis
   version: "0.1.0"
   repository: "file://http-go-based/redis"
+  alias: redis-0
+- name: redis
+  version: "0.1.0"
+  repository: "file://http-go-based/redis"
+  alias: redis-1
+- name: redis
+  version: "0.1.0"
+  repository: "file://http-go-based/redis"
+  alias: redis-2
+- name: redis
+  version: "0.1.0"
+  repository: "file://http-go-based/redis"
+  alias: redis-3
 
 # A chart can be either an 'application' or a 'library' chart.
 #

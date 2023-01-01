@@ -13,14 +13,7 @@ import (
 
 
 func main() {
-	// Connect to Redis
-	client := redis.NewClient(&redis.Options{
-		Addr:     "static-redis:6379",
-		PoolSize: 1000,
-		// Addr:     "127.0.0.1:26379",
-		Password: "",
-		DB:       0,
-	})
+	
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 
@@ -40,6 +33,29 @@ func main() {
 			fmt.Println(erroo)
 			os.Exit(1)
 		}
+
+		redisname := params.Get("redis") 
+		// Write the response
+		fmt.Fprintf(w, "REDIS, %s!", redisname )
+		
+		
+		if redisname != "" {
+			fmt.Fprintf(w, "REDIS, %s!", redisname )
+		}else{
+			redisname = "from-github-redis:6379"
+		}
+
+		// Connect to Redis
+		client := redis.NewClient(&redis.Options{
+			
+			Addr:     redisname,	
+			PoolSize: 100000,
+			// Addr:     "127.0.0.1:26379",
+			Password: "",
+			DB:       0,
+			
+		})
+
 
 		// Measure the latency time
 		
