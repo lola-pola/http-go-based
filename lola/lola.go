@@ -42,7 +42,7 @@ func main() {
 		if redisname != "" {
 			fmt.Fprintf(w, "REDIS, %s!", redisname )
 		}else{
-			redisname = "from-github-redis:6379"
+			redisname = "from-github-redis-0:6379"
 		}
 
 		// Connect to Redis
