@@ -65,7 +65,7 @@ resources:
     cpu: 2
     memory: 4Gi
   requests:
-    cpu: 2
+    cpu: 1
     memory: 4Gi
 
 autoscaling:
