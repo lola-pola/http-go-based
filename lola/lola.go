@@ -16,6 +16,7 @@ func main() {
 	// Connect to Redis
 	client := redis.NewClient(&redis.Options{
 		Addr:     "static-redis:6379",
+		PoolSize: 1000,
 		// Addr:     "127.0.0.1:26379",
 		Password: "",
 		DB:       0,
