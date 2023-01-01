@@ -6,6 +6,7 @@ import (
 	"time"
 	// "math/rand"
 	"strconv"
+	"os"
 	"github.com/go-redis/redis"
 )
 
@@ -38,11 +39,18 @@ func main() {
 		// Write the response
 		fmt.Fprintf(w, "Number to calculate, %s!", numStr )
 		
+		// Get the hostname 
+		hostname, erroo := os.Hostname()
+		if erroo != nil {
+			fmt.Println(erroo)
+			os.Exit(1)
+		}
+
 		// Measure the latency time
 		
 		startingtime := time.Now()
 		// Write the response
-		fmt.Fprint(w, " Start Calculating, %s!", startingtime)
+		fmt.Fprint(w, " Start Calculating, %s!", startingtime, hostname)
 
 		num, err := strconv.Atoi(numStr)
 		if err != nil {
@@ -62,8 +70,8 @@ func main() {
 		// Calculate and print the latency time
 		latency := time.Since(start)
 		fmt.Fprint(w ,latency)
-		fmt.Fprint(w, " Latency time, %s!", latency)
-		fmt.Printf("Latency time: %s\n", latency)
+		fmt.Fprint(w, " Latency time, %s!", latency, hostname)
+		fmt.Printf("Latency time: %s\n", latency, hostname)
 		}
 	})
 	
