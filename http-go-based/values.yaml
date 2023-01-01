@@ -8,7 +8,7 @@ image:
   repository: acrworkflow1672133156031.azurecr.io/http-go-code
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "1"
+  tag: "2"
 
 imagePullSecrets: []
 nameOverride: ""

@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"time"
 	// "math/rand"
+	"strconv"
 	"github.com/go-redis/redis"
 )
 
@@ -26,35 +27,44 @@ func main() {
 	})
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+
+		if r.Method == "GET" {
+		// Parse the query string parameters
+		params := r.URL.Query()
+
+		// Get the value of the "name" parameter
+		numStr := params.Get("num")
+
+		// Write the response
+		fmt.Fprintf(w, "Number to calculate, %s!", numStr )
+		
 		// Measure the latency time
 		
 		startingtime := time.Now()
 		// Write the response
-		fmt.Fprint(w, " Start ")
-		
+		fmt.Fprint(w, " Start Calculating, %s!", startingtime)
 
-		
-		
-		
-
-		// rand.Seed(time.Now().UnixNano())
-		// b := rand.Intn(100) + 1
-		// fmt.Println(b)
-		fmt.Println(fibonacci(5000))
-		// Store the response in Redis
-		// latencys := time.Since(start)
-		// lolas := latencys.String()
-		start := time.Now()
-		err := client.Set(startingtime.String() ,start , 0).Err()
+		num, err := strconv.Atoi(numStr)
 		if err != nil {
 			fmt.Println(err)
+			return
+		}
+		// Calculate the Fibonacci number
+		 
+		fmt.Println(fibonacci(num))
+		start := time.Now()		
+		errs := client.Set(startingtime.String() ,start , 0).Err()
+		if errs != nil {
+			fmt.Println(errs)
 			return
 		}
 
 		// Calculate and print the latency time
 		latency := time.Since(start)
 		fmt.Fprint(w ,latency)
+		fmt.Fprint(w, " Latency time, %s!", latency)
 		fmt.Printf("Latency time: %s\n", latency)
+		}
 	})
 	
 	http.ListenAndServe(":8085", nil)
