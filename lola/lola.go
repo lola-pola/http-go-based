@@ -11,12 +11,6 @@ import (
 )
 
 
-func fibonacci(n int) int {
-	if n <= 1 {
-		return n
-	}
-	return fibonacci(n-1) + fibonacci(n-2)
-}
 
 func main() {
 	// Connect to Redis
@@ -59,7 +53,7 @@ func main() {
 		}
 		// Calculate the Fibonacci number
 		 
-		fmt.Println(fibonacci(num))
+		go fibonacci(num)
 		start := time.Now()		
 		errs := client.Set(startingtime.String() ,start , 0).Err()
 		if errs != nil {
@@ -76,4 +70,14 @@ func main() {
 	})
 	
 	http.ListenAndServe(":8085", nil)
+}
+
+
+
+
+func fibonacci(n int) int {
+	if n <= 1 {
+		return n
+	}
+	return fibonacci(n-1) + fibonacci(n-2)
 }
