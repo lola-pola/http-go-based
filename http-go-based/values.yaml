@@ -75,7 +75,7 @@ autoscaling:
   targetCPUUtilizationPercentage: 90
   # targetMemoryUtilizationPercentage: 80
 
-nodeSelector: {}
+nodeSelector: {'chaos': 'chaos'}
 
 tolerations: []
 
