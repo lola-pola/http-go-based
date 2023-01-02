@@ -70,7 +70,8 @@ func main() {
 		}
 		// Calculate the Fibonacci number
 		 
-		go fibonacci(num)
+		// go fibonacci(num)
+		fmt.Print(fibonacci(num))
 		start := time.Now()		
 		errs := client.Set(startingtime.String() ,start , 0).Err()
 		if errs != nil {
