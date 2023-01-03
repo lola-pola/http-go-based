@@ -58,5 +58,5 @@ num=1 is the number you want to calculate ( will increase cpu load)
 graph TD;
     user-->go-http-app;
     go-http-app-->redis;
-    go-http-app-->user-response-time;
+    go-http-app-->user;
 ```
