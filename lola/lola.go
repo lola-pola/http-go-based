@@ -22,9 +22,14 @@ func main() {
 		
 		validate := params.Get("validate")
 
+		hostname, erroo := os.Hostname()
+		if erroo != nil {
+			fmt.Println(erroo)
+		}
+
 		if validate == "true" {
 			start := time.Now()		
-			fmt.Fprintf(w, "Validated, %s!", validate )
+			fmt.Fprintf(w, "Validated, %s!", validate , hostname )
 			client := &http.Client{}
 			req, err := http.NewRequest("GET", "http://from-github-http-servers", nil)
 			res, err := client.Do(req)
@@ -35,7 +40,7 @@ func main() {
 				fmt.Println(res.StatusCode)
 			}
 			latency := time.Since(start)
-			fmt.Fprintf(w, "time inside, %s!", latency )
+			fmt.Fprintf(w, "time inside, %s!", latency ,hostname )
 			return
 		}
 
@@ -65,10 +70,7 @@ func main() {
 		fmt.Fprintf(w, "Number to calculate, %s!", numStr )
 		
 		// Get the hostname 
-		hostname, erroo := os.Hostname()
-		if erroo != nil {
-			fmt.Println(erroo)
-		}
+
 
 		redisname := params.Get("redis") 
 		// Write the response
