@@ -71,7 +71,9 @@ func main() {
 		// Calculate the Fibonacci number
 		 
 		// go fibonacci(num)
-		fmt.Print(fibonacci(num))
+		fmt.Println(num)
+
+		fmt.Println(fibonacci(1))
 		start := time.Now()		
 		errs := client.Set(startingtime.String() ,start , 0).Err()
 		if errs != nil {
@@ -94,8 +96,14 @@ func main() {
 
 
 func fibonacci(n int) int {
+	
 	if n <= 1 {
 		return n
 	}
 	return fibonacci(n-1) + fibonacci(n-2)
 }
+
+
+
+
+
