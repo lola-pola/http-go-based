@@ -59,4 +59,5 @@ graph TD;
     user-->go-http-app;
     go-http-app-->redis;
     go-http-app-->user;
+    redis-->user;
 ```
