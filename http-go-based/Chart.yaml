@@ -6,6 +6,10 @@ dependencies:
   version: "0.1.0"
   repository: "file://http-go-based/redis"
   alias: redis-0
+- name: http-servers
+  version: "0.1.0"
+  repository: "file://http-go-based/http-servers"
+  alias: http-servers
 - name: redis
   version: "0.1.0"
   repository: "file://http-go-based/redis"

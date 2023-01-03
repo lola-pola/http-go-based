@@ -10,8 +10,6 @@ import (
 	"github.com/go-redis/redis"
 )
 
-
-
 func main() {
 	
 
@@ -20,6 +18,45 @@ func main() {
 		if r.Method == "GET" {
 		// Parse the query string parameters
 		params := r.URL.Query()
+
+		
+		validate := params.Get("validate")
+
+		if validate == "true" {
+			start := time.Now()		
+			fmt.Fprintf(w, "Validated, %s!", validate )
+			client := &http.Client{}
+			req, err := http.NewRequest("GET", "http://from-github-http-servers", nil)
+			res, err := client.Do(req)
+			if err != nil {
+				fmt.Println(err)
+				return
+			}else{
+				fmt.Println(res.StatusCode)
+			}
+			latency := time.Since(start)
+			fmt.Fprintf(w, "time inside, %s!", latency )
+			return
+		}
+
+
+		if validate == "google" {
+			start := time.Now()		
+			fmt.Fprintf(w, "google, %s!", validate )
+			client := &http.Client{}
+			req, err := http.NewRequest("GET", "https://google.com", nil)
+			res, err := client.Do(req)
+			if err != nil {
+				fmt.Println(err)
+				return
+			}else{
+				fmt.Println(res.StatusCode)
+			}
+			latency := time.Since(start)
+			fmt.Fprintf(w, "time outside, %s!", latency )
+			return
+		}
+
 
 		// Get the value of the "name" parameter
 		numStr := params.Get("num")
@@ -31,7 +68,6 @@ func main() {
 		hostname, erroo := os.Hostname()
 		if erroo != nil {
 			fmt.Println(erroo)
-			os.Exit(1)
 		}
 
 		redisname := params.Get("redis") 
