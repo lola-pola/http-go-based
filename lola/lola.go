@@ -27,6 +27,13 @@ func main() {
 			fmt.Println(erroo)
 		}
 
+		if validate == "stamp" {
+			start := time.Now()		
+			latency := time.Since(start)
+			fmt.Fprintf(w, "time inside, %s!", latency ,hostname )
+			return
+		}
+
 		if validate == "true" {
 			start := time.Now()		
 			fmt.Fprintf(w, "Validated, %s!", validate , hostname )
