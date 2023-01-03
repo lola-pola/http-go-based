@@ -30,7 +30,7 @@ func main() {
 		if validate == "stamp" {
 			start := time.Now()		
 			latency := time.Since(start)
-			fmt.Fprintf(w, "time inside, %s!", latency ,hostname )
+			fmt.Println(latency)
 			return
 		}
 
