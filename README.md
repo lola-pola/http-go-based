@@ -49,7 +49,7 @@ graph TD;
 # 3rd test that you can validate outside traffic app will try to get redis in cluster
 this will return true if the app is up and running and will retun the latancy of the app 
 
-elhayefrat@elhays% curl 'http://20.73.213.32:8085?redis=from-github-redis-0,&num=1'
+elhayefrat@elhays% curl 'http://xx.xx.xx.xx:8085?redis=from-github-redis-0,&num=1'
 Number to calculate, 1!REDIS, from-github-redis-0,!REDIS, from-github-redis-0,! Start Calculating, %s!2023-01-03 08:10:48.755705273 +0000 UTC m=+2334.040063203from-github-http-go-based-5b9784c985-hgqb4%     
 
 redis is redis hostname you can route between 4 redis from-github-redis-0,1,2,3
